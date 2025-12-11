@@ -10,34 +10,15 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export default function HabitCard({ habit, onComplete, onDelete }) {
+export default function HabitCard({ habit, onComplete, onSkip, onDelete }) {
   const [isCompleting, setIsCompleting] = useState(false);
-  const today = new Date().toISOString().split('T')[0];
 
-  const handleComplete = async () => {
-    setIsCompleting(true);
-    try {
-      // Create habit log
-      await base44.entities.HabitLog.create({
-        habit_id: habit.id,
-        date: today,
-        completed_at: new Date().toISOString()
-      });
-      
-      // Update streak
-      const newStreak = (habit.current_streak || 0) + 1;
-      const bestStreak = Math.max(newStreak, habit.best_streak || 0);
-      await base44.entities.Habit.update(habit.id, {
-        current_streak: newStreak,
-        best_streak: bestStreak
-      });
-      
-      onComplete?.();
-    } catch (error) {
-      console.error('Failed to complete habit:', error);
-    } finally {
-      setIsCompleting(false);
-    }
+  const handleComplete = () => {
+    onComplete?.();
+  };
+
+  const handleSkip = () => {
+    onSkip?.();
   };
 
   const categoryColors = {
@@ -93,13 +74,8 @@ export default function HabitCard({ habit, onComplete, onDelete }) {
           <Button
             size="icon"
             variant="ghost"
-            className={`h-10 w-10 rounded-full transition-all ${
-              isCompleting 
-                ? 'bg-emerald-100 text-emerald-600' 
-                : 'hover:bg-emerald-50 hover:text-emerald-600'
-            }`}
+            className="h-10 w-10 rounded-full hover:bg-emerald-50 hover:text-emerald-600 transition-all"
             onClick={handleComplete}
-            disabled={isCompleting}
           >
             <Check className="w-5 h-5" />
           </Button>
@@ -111,6 +87,9 @@ export default function HabitCard({ habit, onComplete, onDelete }) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={handleSkip}>
+                Log Skip
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onDelete?.(habit.id)} className="text-red-600">
                 Delete habit
               </DropdownMenuItem>
