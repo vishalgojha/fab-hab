@@ -29,7 +29,7 @@ export default function WhatsAppSection() {
             </h2>
             
             <p className="text-slate-500 mb-8 leading-relaxed">
-              fabhab, your personal habit AI, lives in WhatsApp. Log completions with a message, 
+              FabHab, your personal habit AI, lives in WhatsApp. Log completions with a message, 
               get predictive insights, and receive interventions exactly when you need them.
             </p>
             
@@ -78,7 +78,7 @@ export default function WhatsAppSection() {
                       <span className="text-white text-lg">F</span>
                     </div>
                     <div>
-                      <div className="text-white font-medium text-sm">fabhab AI</div>
+                      <div className="text-white font-medium text-sm">FabHab AI</div>
                       <div className="text-green-100 text-xs">online</div>
                     </div>
                   </div>

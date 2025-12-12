@@ -58,7 +58,7 @@ export default function Demo() {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
                 <span className="text-white font-bold text-lg">F</span>
               </div>
-              <span className="text-xl font-semibold text-slate-900">fabhab</span>
+              <span className="text-xl font-semibold text-slate-900">FabHab</span>
             </Link>
             
             <div className="flex items-center gap-3">
@@ -383,7 +383,7 @@ export default function Demo() {
                           <span className="text-white text-lg">F</span>
                         </div>
                         <div>
-                          <div className="text-white font-medium text-sm">fabhab AI</div>
+                          <div className="text-white font-medium text-sm">FabHab AI</div>
                           <div className="text-green-100 text-xs">online</div>
                         </div>
                       </div>

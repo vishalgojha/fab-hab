@@ -16,7 +16,7 @@ export default function Home() {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
               <span className="text-white font-bold text-lg">F</span>
             </div>
-            <span className="text-xl font-semibold text-slate-900">fabhab</span>
+            <span className="text-xl font-semibold text-slate-900">FabHab</span>
           </Link>
           
           <div className="hidden md:flex items-center gap-8">

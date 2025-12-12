@@ -146,12 +146,12 @@ export default function Dashboard() {
 
   const handleShareAchievement = (achievement) => {
     const badge = achievement.badge || achievement;
-    const text = `🎉 I just unlocked "${badge.name}" in fabhab! ${badge.icon}`;
+    const text = `🎉 I just unlocked "${badge.name}" in FabHab! ${badge.icon}`;
     const url = window.location.origin;
     
     if (navigator.share) {
       navigator.share({
-        title: 'fabhab Achievement',
+        title: 'FabHab Achievement',
         text: text,
         url: url
       });
@@ -173,7 +173,7 @@ export default function Dashboard() {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
                 <span className="text-white font-bold text-lg">F</span>
               </div>
-              <span className="text-xl font-semibold text-slate-900 hidden sm:block">fabhab</span>
+              <span className="text-xl font-semibold text-slate-900 hidden sm:block">FabHab</span>
             </Link>
             
             <div className="flex items-center gap-3">
@@ -435,7 +435,7 @@ export default function Dashboard() {
                 >
                   <div className="flex items-center gap-3">
                     <MessageCircle className="w-5 h-5 text-green-600" />
-                    <span className="text-sm font-medium text-green-700">Chat with fabhab AI</span>
+                    <span className="text-sm font-medium text-green-700">Chat with FabHab AI</span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform" />
                 </a>

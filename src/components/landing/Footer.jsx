@@ -13,7 +13,7 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">F</span>
               </div>
-              <span className="text-xl font-semibold text-white">fabhab</span>
+              <span className="text-xl font-semibold text-white">FabHab</span>
             </Link>
             <p className="text-slate-400 text-sm">AI-powered habit intelligence for lasting behavior change.</p>
           </div>
@@ -81,7 +81,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
               <p className="text-slate-500">
-                © 2025 fabhab. All rights reserved.
+                © 2025 FabHab. All rights reserved.
               </p>
               <a 
                 href="https://chaoscarftlabs.com" 
