@@ -29,7 +29,7 @@ export default function WhatsAppSection() {
             </h2>
             
             <p className="text-slate-500 mb-8 leading-relaxed">
-              Nexus, your personal habit AI, lives in WhatsApp. Log completions with a message, 
+              fabhab, your personal habit AI, lives in WhatsApp. Log completions with a message, 
               get predictive insights, and receive interventions exactly when you need them.
             </p>
             
@@ -75,10 +75,10 @@ export default function WhatsAppSection() {
                   {/* Status bar */}
                   <div className="bg-green-600 px-6 py-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                      <span className="text-white text-lg">N</span>
+                      <span className="text-white text-lg">F</span>
                     </div>
                     <div>
-                      <div className="text-white font-medium text-sm">Nexus AI</div>
+                      <div className="text-white font-medium text-sm">fabhab AI</div>
                       <div className="text-green-100 text-xs">online</div>
                     </div>
                   </div>

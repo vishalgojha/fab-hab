@@ -108,9 +108,9 @@ export default function Dashboard() {
           <div className="flex items-center justify-between">
             <Link to={createPageUrl('Home')} className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
-                <span className="text-white font-bold text-lg">N</span>
+                <span className="text-white font-bold text-lg">F</span>
               </div>
-              <span className="text-xl font-semibold text-slate-900 hidden sm:block">Nexus</span>
+              <span className="text-xl font-semibold text-slate-900 hidden sm:block">fabhab</span>
             </Link>
             
             <div className="flex items-center gap-3">
@@ -352,7 +352,7 @@ export default function Dashboard() {
                 >
                   <div className="flex items-center gap-3">
                     <MessageCircle className="w-5 h-5 text-green-600" />
-                    <span className="text-sm font-medium text-green-700">Chat with Nexus AI</span>
+                    <span className="text-sm font-medium text-green-700">Chat with fabhab AI</span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform" />
                 </a>
