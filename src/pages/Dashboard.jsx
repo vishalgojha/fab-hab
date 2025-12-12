@@ -21,6 +21,7 @@ import AchievementUnlockModal from '@/components/gamification/AchievementUnlockM
 import PointsLevelCard from '@/components/gamification/PointsLevelCard';
 import BadgesGrid from '@/components/gamification/BadgesGrid';
 import BadgeDetailModal from '@/components/gamification/BadgeDetailModal';
+import Footer from '@/components/landing/Footer';
 
 export default function Dashboard() {
   const [showCreateHabit, setShowCreateHabit] = useState(false);
@@ -507,6 +508,8 @@ export default function Dashboard() {
         onClose={() => setBadgeDetailModal({ open: false, badge: null, unlocked: false })}
         onShare={handleShareAchievement}
       />
-    </div>
-  );
-}
+
+      <Footer />
+      </div>
+      );
+      }
