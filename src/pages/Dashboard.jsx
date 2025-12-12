@@ -17,6 +17,10 @@ import EmotionLogDialog from '@/components/core/EmotionLogDialog';
 import AdaptiveProtocolCard from '@/components/core/AdaptiveProtocolCard';
 import NeuroFeedbackCard from '@/components/dashboard/NeuroFeedbackCard';
 import CreateHabitDialog from '@/components/dashboard/CreateHabitDialog';
+import AchievementUnlockModal from '@/components/gamification/AchievementUnlockModal';
+import PointsLevelCard from '@/components/gamification/PointsLevelCard';
+import BadgesGrid from '@/components/gamification/BadgesGrid';
+import BadgeDetailModal from '@/components/gamification/BadgeDetailModal';
 
 export default function Dashboard() {
   const [showCreateHabit, setShowCreateHabit] = useState(false);
@@ -25,6 +29,8 @@ export default function Dashboard() {
   const [emotionLogCompleted, setEmotionLogCompleted] = useState(true);
   const [autoDetecting, setAutoDetecting] = useState(false);
   const [forecasting, setForecasting] = useState(false);
+  const [achievementToShow, setAchievementToShow] = useState(null);
+  const [badgeDetailModal, setBadgeDetailModal] = useState({ open: false, badge: null, unlocked: false });
   const queryClient = useQueryClient();
 
   const { data: habits = [], isLoading: habitsLoading } = useQuery({
@@ -45,6 +51,34 @@ export default function Dashboard() {
   const { data: adjustments = [] } = useQuery({
     queryKey: ['adjustments'],
     queryFn: () => base44.entities.ProtocolAdjustment.filter({ user_notified: false }, '-created_date', 3)
+  });
+
+  const { data: userStats } = useQuery({
+    queryKey: ['user-stats'],
+    queryFn: async () => {
+      const stats = await base44.entities.UserStats.list();
+      if (stats.length === 0) {
+        return await base44.entities.UserStats.create({
+          total_points: 0,
+          level: 1,
+          total_completions: 0,
+          longest_streak: 0,
+          perfect_weeks: 0,
+          badges_unlocked: 0
+        });
+      }
+      return stats[0];
+    }
+  });
+
+  const { data: badges = [] } = useQuery({
+    queryKey: ['badges'],
+    queryFn: () => base44.entities.Badge.list()
+  });
+
+  const { data: userAchievements = [] } = useQuery({
+    queryKey: ['user-achievements'],
+    queryFn: () => base44.entities.UserAchievement.list()
   });
 
   const handleAutoDetect = async () => {
@@ -76,11 +110,23 @@ export default function Dashboard() {
     queryClient.invalidateQueries(['habits']);
   };
 
-  const refreshData = () => {
+  const refreshData = async () => {
     queryClient.invalidateQueries(['habits']);
     queryClient.invalidateQueries(['suggested-habits']);
     queryClient.invalidateQueries(['forecasts']);
     queryClient.invalidateQueries(['adjustments']);
+    queryClient.invalidateQueries(['user-stats']);
+    
+    // Check for new achievements
+    try {
+      const result = await base44.functions.invoke('checkAchievements');
+      if (result.data.new_achievements?.length > 0) {
+        setAchievementToShow(result.data.new_achievements[0]);
+        queryClient.invalidateQueries(['user-achievements']);
+      }
+    } catch (error) {
+      console.error('Failed to check achievements:', error);
+    }
   };
 
   const handleHabitComplete = (habit) => {
@@ -96,6 +142,23 @@ export default function Dashboard() {
   const handleAdjustmentAcknowledge = async (adjustmentId) => {
     await base44.entities.ProtocolAdjustment.update(adjustmentId, { user_notified: true });
     queryClient.invalidateQueries(['adjustments']);
+  };
+
+  const handleShareAchievement = (achievement) => {
+    const badge = achievement.badge || achievement;
+    const text = `🎉 I just unlocked "${badge.name}" in fabhab! ${badge.icon}`;
+    const url = window.location.origin;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'fabhab Achievement',
+        text: text,
+        url: url
+      });
+    } else {
+      const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      window.open(shareUrl, '_blank');
+    }
   };
 
   const whatsappUrl = base44.agents.getWhatsAppConnectURL('habit_coach');
@@ -338,6 +401,26 @@ export default function Dashboard() {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Points & Level */}
+            {userStats && <PointsLevelCard stats={userStats} />}
+            
+            {/* Badges Preview */}
+            {badges.length > 0 && (
+              <div className="bg-white rounded-2xl border border-slate-100 p-5">
+                <h3 className="font-medium text-slate-900 mb-4 flex items-center justify-between">
+                  <span>Achievements</span>
+                  <span className="text-xs text-slate-400">
+                    {userAchievements.length}/{badges.length}
+                  </span>
+                </h3>
+                <BadgesGrid 
+                  badges={badges.slice(0, 6)} 
+                  userAchievements={userAchievements}
+                  onBadgeClick={(badge, unlocked) => setBadgeDetailModal({ open: true, badge, unlocked })}
+                />
+              </div>
+            )}
+            
             <NeuroFeedbackCard />
             
             {/* Quick Actions */}
@@ -408,6 +491,21 @@ export default function Dashboard() {
         habit={emotionLogHabit}
         completed={emotionLogCompleted}
         onSave={refreshData}
+      />
+      
+      <AchievementUnlockModal
+        achievement={achievementToShow}
+        open={!!achievementToShow}
+        onClose={() => setAchievementToShow(null)}
+        onShare={handleShareAchievement}
+      />
+      
+      <BadgeDetailModal
+        badge={badgeDetailModal.badge}
+        isUnlocked={badgeDetailModal.unlocked}
+        open={badgeDetailModal.open}
+        onClose={() => setBadgeDetailModal({ open: false, badge: null, unlocked: false })}
+        onShare={handleShareAchievement}
       />
     </div>
   );
