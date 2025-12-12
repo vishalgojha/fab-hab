@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Link to={createPageUrl('Home')} className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">N</span>
+              <span className="text-white font-bold text-lg">F</span>
             </div>
-            <span className="text-xl font-semibold text-white">Nexus</span>
+            <span className="text-xl font-semibold text-white">fabhab</span>
           </Link>
           
           <div className="flex items-center gap-8 text-sm">
@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
           
           <p className="text-slate-500 text-sm">
-            © 2024 Nexus. All rights reserved.
+            © 2024 fabhab. All rights reserved.
           </p>
         </div>
       </div>
