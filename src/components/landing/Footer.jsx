@@ -84,12 +84,12 @@ export default function Footer() {
                 © 2025 FabHab. All rights reserved.
               </p>
               <a 
-                href="https://chaoscarftlabs.com" 
+                href="https://chaoscraftlabs.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-violet-400 hover:text-violet-300 text-sm font-medium transition-colors"
               >
-                A chaoscarftlabs.com product
+                A chaoscraftlabs.com product
               </a>
             </div>
             <p className="text-slate-500 text-xs">
