@@ -18,14 +18,14 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* AI Pages */}
+              {/* Product */}
               <div>
-                <h3 className="text-white font-semibold mb-4 text-sm">AI Pages</h3>
+                <h3 className="text-white font-semibold mb-4 text-sm">Product</h3>
                 <div className="space-y-2">
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">AI-Generated Help Center</a>
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">AI Terms Glossary</a>
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">Getting Started Guide</a>
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">Smart Troubleshooter</a>
+                  <Link to={createPageUrl('About')} className="block text-slate-400 hover:text-white text-sm transition-colors">About</Link>
+                  <a href="#features" className="block text-slate-400 hover:text-white text-sm transition-colors">Features</a>
+                  <a href="#whatsapp" className="block text-slate-400 hover:text-white text-sm transition-colors">AI Coach</a>
+                  <Link to={createPageUrl('Demo')} className="block text-slate-400 hover:text-white text-sm transition-colors">Demo</Link>
                 </div>
               </div>
 
@@ -57,10 +57,10 @@ export default function Footer() {
               <div>
                 <h3 className="text-white font-semibold mb-4 text-sm">Legal</h3>
                 <div className="space-y-2">
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">Disclaimer</a>
-                  <a href="#" className="block text-slate-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+                  <Link to={createPageUrl('Privacy')} className="block text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</Link>
+                  <Link to={createPageUrl('Terms')} className="block text-slate-400 hover:text-white text-sm transition-colors">Terms of Service</Link>
+                  <Link to={createPageUrl('Disclaimer')} className="block text-slate-400 hover:text-white text-sm transition-colors">Disclaimer</Link>
+                  <a href="https://chaoscraftlabs.com/cookies" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
                 </div>
               </div>
             </div>
