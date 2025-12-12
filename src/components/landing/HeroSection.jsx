@@ -84,13 +84,15 @@ export default function HeroSection() {
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
-          <Button 
-            variant="ghost" 
-            size="lg"
-            className="text-slate-600 hover:text-slate-900 px-8 py-6 text-base rounded-full"
-          >
-            Watch Demo
-          </Button>
+          <Link to={createPageUrl('Demo')}>
+            <Button 
+              variant="ghost" 
+              size="lg"
+              className="text-slate-600 hover:text-slate-900 px-8 py-6 text-base rounded-full"
+            >
+              Watch Demo
+            </Button>
+          </Link>
         </motion.div>
         
         {/* Stats */}
