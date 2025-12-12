@@ -15,15 +15,7 @@ export default function Footer() {
               </div>
               <span className="text-xl font-semibold text-white">fabhab</span>
             </Link>
-            <p className="text-slate-400 text-sm mb-3">AI-powered habit intelligence for lasting behavior change.</p>
-            <a 
-              href="https://chaoscarftlabs.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-violet-400 hover:text-violet-300 text-xs transition-colors"
-            >
-              A chaoscarftlabs.com product
-            </a>
+            <p className="text-slate-400 text-sm">AI-powered habit intelligence for lasting behavior change.</p>
           </div>
           
           {/* Product Family */}
@@ -42,9 +34,20 @@ export default function Footer() {
                   href={product.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="block text-slate-400 hover:text-white text-sm transition-colors"
+                  className="group block text-slate-400 hover:text-white text-sm transition-colors relative"
+                  onMouseEnter={(e) => {
+                    const preview = e.currentTarget.querySelector('.preview-tooltip');
+                    if (preview) preview.style.display = 'block';
+                  }}
+                  onMouseLeave={(e) => {
+                    const preview = e.currentTarget.querySelector('.preview-tooltip');
+                    if (preview) preview.style.display = 'none';
+                  }}
                 >
                   {product.name}
+                  <div className="preview-tooltip hidden absolute left-0 bottom-full mb-2 bg-white rounded-lg shadow-2xl border border-slate-200 overflow-hidden z-10" style={{width: '320px', height: '180px'}}>
+                    <iframe src={product.url} className="w-full h-full border-0 pointer-events-none" title={product.name} />
+                  </div>
                 </a>
               ))}
             </div>
@@ -75,10 +78,20 @@ export default function Footer() {
         
         {/* Bottom bar */}
         <div className="pt-8 border-t border-slate-800">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-            <p className="text-slate-500">
-              © 2025 fabhab. All rights reserved.
-            </p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
+              <p className="text-slate-500">
+                © 2025 fabhab. All rights reserved.
+              </p>
+              <a 
+                href="https://chaoscarftlabs.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-violet-400 hover:text-violet-300 text-sm font-medium transition-colors"
+              >
+                A chaoscarftlabs.com product
+              </a>
+            </div>
             <p className="text-slate-500 text-xs">
               This app uses AI for predictive insights. Results may vary. Consult professionals for medical advice.
             </p>
