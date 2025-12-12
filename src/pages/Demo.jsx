@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import Footer from '@/components/landing/Footer';
 
 // Sample demo data
 const demoHabits = [
@@ -325,11 +326,7 @@ export default function Demo() {
                   <h3 className="text-xl font-semibold mb-4">Social Sharing</h3>
                   <p className="text-slate-300 mb-6">Share your achievements with friends and inspire others to build better habits.</p>
                   <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
-                    <p className="text-sm mb-3">🎉 I just unlocked "100 Day Legend" in fabhab! 👑</p>
-                    <Button variant="outline" className="text-white border-white/20 hover:bg-white/10">
-                      <Share2 className="w-4 h-4 mr-2" />
-                      Share Achievement
-                    </Button>
+                    <p className="text-sm mb-3">🎉 I just unlocked "100 Day Legend" in FabHab! 👑</p>
                   </div>
                 </div>
               </div>
@@ -428,7 +425,7 @@ export default function Demo() {
           <div className="bg-gradient-to-br from-violet-600 to-purple-600 rounded-3xl p-12 text-white">
             <h2 className="text-3xl font-bold mb-4">Ready to build lasting habits?</h2>
             <p className="text-violet-100 mb-8 max-w-2xl mx-auto">
-              Join fabhab and experience AI-powered habit intelligence that actually works.
+              Join FabHab and experience AI-powered habit intelligence that actually works.
             </p>
             <Link to={createPageUrl('Dashboard')}>
               <Button size="lg" className="bg-white text-violet-600 hover:bg-slate-50 px-8 rounded-full shadow-xl">
@@ -439,6 +436,8 @@ export default function Demo() {
           </div>
         </motion.div>
       </main>
+      
+      <Footer />
     </div>
   );
 }
