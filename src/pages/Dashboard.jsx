@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { 
   Plus, Brain, Shield, Glasses, MessageCircle, 
-  ChevronRight, Sparkles, Menu, X, Zap, Activity, TrendingUp
+  ChevronRight, Sparkles, Menu, X, Zap, Activity, TrendingUp, Trophy
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -440,7 +440,7 @@ export default function Dashboard() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform" />
                 </a>
-                
+
                 <button
                   onClick={() => setShowCreateHabit(true)}
                   className="flex items-center justify-between p-3 bg-violet-50 rounded-xl hover:bg-violet-100 transition-colors w-full group"
@@ -451,6 +451,17 @@ export default function Dashboard() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-violet-400 group-hover:translate-x-1 transition-transform" />
                 </button>
+
+                <Link
+                  to={createPageUrl('Challenges')}
+                  className="flex items-center justify-between p-3 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors group"
+                >
+                  <div className="flex items-center gap-3">
+                    <Trophy className="w-5 h-5 text-amber-600" />
+                    <span className="text-sm font-medium text-amber-700">Join Challenges</span>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
 
