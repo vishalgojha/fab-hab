@@ -94,25 +94,6 @@ export default function HeroSection() {
             </Button>
           </Link>
         </motion.div>
-        
-        {/* Stats */}
-        <motion.div
-          className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          {[
-            { value: '94%', label: 'Prediction accuracy' },
-            { value: '3.2x', label: 'Habit retention' },
-            { value: '21', label: 'Days to habit' },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-2xl md:text-3xl font-semibold text-slate-900">{stat.value}</div>
-              <div className="text-xs text-slate-400 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
