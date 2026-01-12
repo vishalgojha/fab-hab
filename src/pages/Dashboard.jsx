@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { 
   Plus, Brain, Shield, Glasses, MessageCircle, 
-  ChevronRight, Sparkles, Menu, X, Zap, Activity, TrendingUp, Trophy
+  ChevronRight, Sparkles, Menu, X, Zap, Activity, TrendingUp, Trophy, Heart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import CoachingBadge from '@/components/coach/CoachingBadge';
+import CoachingNotificationCenter from '@/components/coach/CoachingNotificationCenter';
 
 import HabitCard from '@/components/dashboard/HabitCard';
 import AutoDetectedHabitCard from '@/components/core/AutoDetectedHabitCard';
@@ -32,6 +34,7 @@ export default function Dashboard() {
   const [forecasting, setForecasting] = useState(false);
   const [achievementToShow, setAchievementToShow] = useState(null);
   const [badgeDetailModal, setBadgeDetailModal] = useState({ open: false, badge: null, unlocked: false });
+  const [coachingCenterOpen, setCoachingCenterOpen] = useState(false);
   const queryClient = useQueryClient();
 
   const { data: habits = [], isLoading: habitsLoading } = useQuery({
@@ -178,6 +181,8 @@ export default function Dashboard() {
             </Link>
             
             <div className="flex items-center gap-3">
+              <CoachingBadge onClick={() => setCoachingCenterOpen(true)} />
+
               <a 
                 href={whatsappUrl}
                 target="_blank"
@@ -518,6 +523,11 @@ export default function Dashboard() {
         open={badgeDetailModal.open}
         onClose={() => setBadgeDetailModal({ open: false, badge: null, unlocked: false })}
         onShare={handleShareAchievement}
+      />
+
+      <CoachingNotificationCenter 
+        isOpen={coachingCenterOpen}
+        onClose={() => setCoachingCenterOpen(false)}
       />
 
       <Footer />
