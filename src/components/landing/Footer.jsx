@@ -7,14 +7,13 @@ export default function Footer() {
     <footer className="py-12 px-6 bg-slate-900">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
-              {/* Company */}
+              {/* About */}
               <div>
-                <h3 className="text-white font-semibold mb-4 text-sm">Company</h3>
+                <h3 className="text-white font-semibold mb-4 text-sm">About</h3>
                 <div className="space-y-2">
-                  <a href="https://chaoscraftlabs.com/about" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">About Chaos Craft Labs</a>
-                  <a href="https://chaoscraftlabs.com/vision" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">Our Vision</a>
-                  <a href="https://chaoscraftlabs.com/creator" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">Meet the Creator</a>
-                  <a href="https://chaoscraftlabs.com/careers" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">Careers</a>
+                  <Link to={createPageUrl('About')} className="block text-slate-400 hover:text-white text-sm transition-colors">About FabHab</Link>
+                  <Link to={createPageUrl('Demo')} className="block text-slate-400 hover:text-white text-sm transition-colors">How It Works</Link>
+                  <a href="https://chaoscraftlabs.com" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">Chaos Craft Labs</a>
                 </div>
               </div>
 
@@ -60,7 +59,7 @@ export default function Footer() {
                   <Link to={createPageUrl('Privacy')} className="block text-slate-400 hover:text-white text-sm transition-colors">Privacy Policy</Link>
                   <Link to={createPageUrl('Terms')} className="block text-slate-400 hover:text-white text-sm transition-colors">Terms of Service</Link>
                   <Link to={createPageUrl('Disclaimer')} className="block text-slate-400 hover:text-white text-sm transition-colors">Disclaimer</Link>
-                  <a href="https://chaoscraftlabs.com/cookies" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+
                 </div>
               </div>
             </div>
