@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import { base44 } from '@/api/base44Client';
 import HeroSection from '@/components/landing/HeroSection';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import WhatsAppSection from '@/components/landing/WhatsAppSection';
@@ -22,11 +23,17 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Features</a>
             <a href="#whatsapp" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">AI Coach</a>
+            <button
+              onClick={() => base44.auth.redirectToLogin(createPageUrl('Dashboard'))}
+              className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              Login
+            </button>
             <Link 
               to={createPageUrl('Dashboard')} 
               className="text-sm bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-colors"
             >
-              Open App
+              Get Started
             </Link>
           </div>
         </div>
