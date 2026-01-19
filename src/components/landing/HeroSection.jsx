@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import { base44 } from '@/api/base44Client';
 
 export default function HeroSection() {
   return (
@@ -75,15 +76,14 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <Link to={createPageUrl('Dashboard')} className="w-full sm:w-auto">
-            <Button 
-              size="lg" 
-              className="bg-slate-900 hover:bg-slate-800 text-white px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base rounded-full shadow-lg shadow-slate-900/20 transition-all hover:shadow-xl hover:shadow-slate-900/30 w-full sm:w-auto"
-            >
-              Start Your Journey
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
+          <Button 
+            size="lg" 
+            onClick={() => base44.auth.redirectToLogin(createPageUrl('Dashboard'))}
+            className="bg-slate-900 hover:bg-slate-800 text-white px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base rounded-full shadow-lg shadow-slate-900/20 transition-all hover:shadow-xl hover:shadow-slate-900/30 w-full sm:w-auto"
+          >
+            Start Your Journey
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
           <Link to={createPageUrl('Demo')} className="w-full sm:w-auto">
             <Button 
               variant="ghost" 
