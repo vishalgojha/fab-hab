@@ -242,7 +242,7 @@ export default function Dashboard() {
         )}
       </AnimatePresence>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-8">
         {/* Core 4 Features Banner */}
         <div className="grid gap-3 mb-8">
           {/* Auto-detected Habits */}

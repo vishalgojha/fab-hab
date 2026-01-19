@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </nav>
       
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <div id="features">
           <FeaturesSection />

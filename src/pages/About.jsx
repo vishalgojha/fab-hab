@@ -16,22 +16,22 @@ export default function About() {
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <div className="text-center mb-16">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
+        <div className="text-center mb-8 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 border border-violet-100 mb-6">
             <Sparkles className="w-4 h-4 text-violet-600" />
             <span className="text-sm font-medium text-violet-700">About FabHab</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-light text-slate-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-slate-900 mb-4 sm:mb-6">
             Built by <span className="font-medium">Chaos Craft Labs</span>
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
             FabHab is part of the Chaos Craft Labs ecosystem - AI-powered health and wellness tools 
             designed to help you live better, one habit at a time.
           </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           <section>
             <div className="flex items-center gap-3 mb-4">
               <Target className="w-6 h-6 text-violet-600" />

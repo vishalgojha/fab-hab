@@ -76,9 +76,9 @@ export default function Demo() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-8">
         {/* Demo Navigation */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+        <div className="flex gap-2 mb-6 sm:mb-8 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0">
           {[
             { id: 'dashboard', label: 'Dashboard', icon: Activity },
             { id: 'ai', label: 'AI Features', icon: Brain },
