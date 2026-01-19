@@ -237,13 +237,6 @@ export default function Dashboard() {
                 <MessageCircle className="w-5 h-5 text-green-600" />
                 <span className="font-medium">WhatsApp AI Coach</span>
               </a>
-              <button
-                onClick={() => { setShowCreateStake(true); setMobileMenu(false); }}
-                className="flex items-center gap-3 p-4 bg-amber-50 rounded-xl w-full"
-              >
-                <Shield className="w-5 h-5 text-amber-600" />
-                <span className="font-medium">Create Stake</span>
-              </button>
             </div>
           </motion.div>
         )}
