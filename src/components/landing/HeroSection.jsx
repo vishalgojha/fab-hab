@@ -7,7 +7,7 @@ import { createPageUrl } from '@/utils';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 pt-20 sm:pt-0">
       {/* Ambient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-violet-50/30 to-amber-50/20" />
       
@@ -47,7 +47,7 @@ export default function HeroSection() {
         </motion.div>
         
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-slate-900 mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-slate-900 mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
@@ -60,7 +60,7 @@ export default function HeroSection() {
         </motion.h1>
         
         <motion.p
-          className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -70,25 +70,25 @@ export default function HeroSection() {
         </motion.p>
         
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto sm:max-w-none sm:w-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <Link to={createPageUrl('Dashboard')}>
+          <Link to={createPageUrl('Dashboard')} className="w-full sm:w-auto">
             <Button 
               size="lg" 
-              className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-6 text-base rounded-full shadow-lg shadow-slate-900/20 transition-all hover:shadow-xl hover:shadow-slate-900/30"
+              className="bg-slate-900 hover:bg-slate-800 text-white px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base rounded-full shadow-lg shadow-slate-900/20 transition-all hover:shadow-xl hover:shadow-slate-900/30 w-full sm:w-auto"
             >
               Start Your Journey
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
-          <Link to={createPageUrl('Demo')}>
+          <Link to={createPageUrl('Demo')} className="w-full sm:w-auto">
             <Button 
               variant="ghost" 
               size="lg"
-              className="text-slate-600 hover:text-slate-900 px-8 py-6 text-base rounded-full"
+              className="text-slate-600 hover:text-slate-900 px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base rounded-full w-full sm:w-auto"
             >
               Watch Demo
             </Button>

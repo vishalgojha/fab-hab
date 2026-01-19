@@ -214,11 +214,11 @@ export default function Demo() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6 max-w-4xl mx-auto"
             >
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-light text-slate-900 mb-2">
+              <div className="text-center mb-6 sm:mb-8 px-4">
+                <h2 className="text-2xl sm:text-3xl font-light text-slate-900 mb-2">
                   AI-Powered <span className="font-medium">Intelligence</span>
                 </h2>
-                <p className="text-slate-600">Predictive insights that keep you on track</p>
+                <p className="text-sm sm:text-base text-slate-600">Predictive insights that keep you on track</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">

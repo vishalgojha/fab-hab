@@ -43,21 +43,21 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-24 px-6 bg-white relative overflow-hidden">
+    <section className="py-12 sm:py-24 px-4 sm:px-6 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       
       <div className="max-w-6xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-slate-900 mb-3 sm:mb-4">
             Technology that <span className="font-medium">understands</span> you
           </h2>
-          <p className="text-slate-500 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-500 max-w-xl mx-auto">
             Six breakthrough features working in harmony to transform how you build lasting habits.
           </p>
         </motion.div>
