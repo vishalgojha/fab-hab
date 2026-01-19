@@ -49,16 +49,26 @@ export default function WhatsAppSection() {
               ))}
             </ul>
             
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <div className="flex items-center gap-4">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <Button 
+                  size="lg"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 rounded-full shadow-lg shadow-green-600/20"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Connect WhatsApp
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
               <Button 
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 rounded-full shadow-lg shadow-green-600/20"
+                variant="outline"
+                onClick={() => base44.auth.redirectToLogin()}
+                className="px-8 rounded-full"
               >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Connect WhatsApp
-                <ArrowRight className="w-4 h-4 ml-2" />
+                Login
               </Button>
-            </a>
+            </div>
           </motion.div>
           
           <motion.div
