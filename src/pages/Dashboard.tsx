@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { 
   Plus, Brain, Shield, Glasses, MessageCircle, 
-  ChevronRight, Sparkles, Menu, X, Zap, Activity, TrendingUp, Trophy, Heart
+  ChevronRight, Sparkles, Menu, X, Zap, Activity, TrendingUp, Trophy, Heart, Camera
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CoachingBadge from '@/components/coach/CoachingBadge';
@@ -26,6 +26,7 @@ import BadgeDetailModal from '@/components/gamification/BadgeDetailModal';
 import Footer from '@/components/landing/Footer';
 import IndianHealthHub from '@/components/dashboard/IndianHealthHub';
 import AICoachChat from '@/components/dashboard/AICoachChat';
+import DesiCameraHub from '@/components/dashboard/DesiCameraHub';
 
 export default function Dashboard() {
   const [showCreateHabit, setShowCreateHabit] = useState(false);
@@ -38,6 +39,7 @@ export default function Dashboard() {
   const [badgeDetailModal, setBadgeDetailModal] = useState<{open: boolean; badge: any; unlocked: boolean}>({ open: false, badge: null, unlocked: false });
   const [coachingCenterOpen, setCoachingCenterOpen] = useState(false);
   const [aiCoachOpen, setAiCoachOpen] = useState(false);
+  const [cameraOpen, setCameraOpen] = useState(false);
   const queryClient = useQueryClient();
 
   const { data: habits = [], isLoading: habitsLoading } = useQuery({
@@ -417,6 +419,17 @@ export default function Dashboard() {
               <h3 className="font-medium text-slate-900 mb-4">Quick Actions</h3>
               <div className="space-y-2">
                 <button
+                  onClick={() => setCameraOpen(true)}
+                  className="flex items-center justify-between p-3 bg-orange-50 rounded-xl hover:bg-orange-100 transition-colors w-full text-left group"
+                >
+                  <div className="flex items-center gap-3">
+                    <Camera className="w-5 h-5 text-orange-600" />
+                    <span className="text-sm font-medium text-orange-700">Open AI Camera Scanner</span>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                <button
                   onClick={() => setAiCoachOpen(true)}
                   className="flex items-center justify-between p-3 bg-violet-50 rounded-xl hover:bg-violet-100 transition-colors w-full text-left group"
                 >
@@ -513,6 +526,12 @@ export default function Dashboard() {
       <AICoachChat 
         isOpen={aiCoachOpen}
         onClose={() => setAiCoachOpen(false)}
+      />
+
+      <DesiCameraHub 
+        isOpen={cameraOpen}
+        onClose={() => setCameraOpen(false)}
+        onLogged={refreshData}
       />
 
       <Footer />
