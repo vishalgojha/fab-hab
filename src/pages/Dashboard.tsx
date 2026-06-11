@@ -24,6 +24,8 @@ import PointsLevelCard from '@/components/gamification/PointsLevelCard';
 import BadgesGrid from '@/components/gamification/BadgesGrid';
 import BadgeDetailModal from '@/components/gamification/BadgeDetailModal';
 import Footer from '@/components/landing/Footer';
+import IndianHealthHub from '@/components/dashboard/IndianHealthHub';
+import AICoachChat from '@/components/dashboard/AICoachChat';
 
 export default function Dashboard() {
   const [showCreateHabit, setShowCreateHabit] = useState(false);
@@ -35,6 +37,7 @@ export default function Dashboard() {
   const [achievementToShow, setAchievementToShow] = useState<any>(null);
   const [badgeDetailModal, setBadgeDetailModal] = useState<{open: boolean; badge: any; unlocked: boolean}>({ open: false, badge: null, unlocked: false });
   const [coachingCenterOpen, setCoachingCenterOpen] = useState(false);
+  const [aiCoachOpen, setAiCoachOpen] = useState(false);
   const queryClient = useQueryClient();
 
   const { data: habits = [], isLoading: habitsLoading } = useQuery({
@@ -181,15 +184,13 @@ export default function Dashboard() {
             <div className="flex items-center gap-3">
               <CoachingBadge onClick={() => setCoachingCenterOpen(true)} />
 
-              <a 
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-full text-sm font-medium hover:bg-green-100 transition-colors"
+              <button 
+                onClick={() => setAiCoachOpen(true)}
+                className="hidden sm:flex items-center gap-2 px-4 py-2 bg-violet-50 text-violet-700 rounded-full text-sm font-medium hover:bg-violet-100 transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
                 AI Coach
-              </a>
+              </button>
               
               <Button
                 onClick={() => setShowCreateHabit(true)}
@@ -226,14 +227,16 @@ export default function Dashboard() {
               </Button>
             </div>
             <div className="p-6 space-y-4">
-              <a 
-                href={whatsappUrl}
-                target="_blank"
-                className="flex items-center gap-3 p-4 bg-green-50 rounded-xl"
+              <button 
+                onClick={() => {
+                  setMobileMenu(false);
+                  setAiCoachOpen(true);
+                }}
+                className="flex items-center gap-3 p-4 bg-violet-50 text-violet-700 rounded-xl w-full text-left"
               >
-                <MessageCircle className="w-5 h-5 text-green-600" />
-                <span className="font-medium">WhatsApp AI Coach</span>
-              </a>
+                <MessageCircle className="w-5 h-5 text-violet-600" />
+                <span className="font-medium">Chat with Desi AI Coach</span>
+              </button>
             </div>
           </motion.div>
         )}
@@ -312,6 +315,7 @@ export default function Dashboard() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
+            <IndianHealthHub />
             <section>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-slate-900">Your Habits</h2>
@@ -412,18 +416,16 @@ export default function Dashboard() {
             <div className="bg-white rounded-2xl border border-slate-100 p-5">
               <h3 className="font-medium text-slate-900 mb-4">Quick Actions</h3>
               <div className="space-y-2">
-                <a 
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 bg-green-50 rounded-xl hover:bg-green-100 transition-colors group"
+                <button
+                  onClick={() => setAiCoachOpen(true)}
+                  className="flex items-center justify-between p-3 bg-violet-50 rounded-xl hover:bg-violet-100 transition-colors w-full text-left group"
                 >
                   <div className="flex items-center gap-3">
-                    <MessageCircle className="w-5 h-5 text-green-600" />
-                    <span className="text-sm font-medium text-green-700">Chat with FabHab AI</span>
+                    <MessageCircle className="w-5 h-5 text-violet-600" />
+                    <span className="text-sm font-medium text-violet-700">Chat with Desi AI Coach</span>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-green-400 group-hover:translate-x-1 transition-transform" />
-                </a>
+                  <ChevronRight className="w-4 h-4 text-violet-400 group-hover:translate-x-1 transition-transform" />
+                </button>
 
                 <button
                   onClick={() => setShowCreateHabit(true)}
@@ -506,6 +508,11 @@ export default function Dashboard() {
       <CoachingNotificationCenter 
         isOpen={coachingCenterOpen}
         onClose={() => setCoachingCenterOpen(false)}
+      />
+
+      <AICoachChat 
+        isOpen={aiCoachOpen}
+        onClose={() => setAiCoachOpen(false)}
       />
 
       <Footer />

@@ -39,8 +39,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur border border-slate-200/60 shadow-sm mb-8">
-            <Sparkles className="w-4 h-4 text-violet-500" />
-            <span className="text-sm font-medium text-slate-600">AI-Powered Habit Intelligence</span>
+            <Sparkles className="w-4 h-4 text-orange-500" />
+            <span className="text-sm font-medium text-slate-600">AI-Powered Desi Health & Habit Tracker</span>
           </div>
         </motion.div>
         
@@ -50,21 +50,20 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          Build habits
+          Optimise wellness
           <br />
-          <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-amber-500 bg-clip-text text-transparent font-medium">
-            that stick
+          <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-500 bg-clip-text text-transparent font-medium">
+            the Desi way
           </span>
         </motion.h1>
         
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-slate-500 max-w-3xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Predictive AI that anticipates your challenges. Neurofeedback that optimizes your timing. 
-          Community stakes that keep you accountable.
+          The ultimate health tracker tailored for the Indian lifestyle. Monitor daily Chai limits, log water in traditional Matkas, track meals (Poha, Roti-Dal), and embrace Ayurvedic habits like Surya Namaskar and Pranayama with our interactive AI Health Coach.
         </motion.p>
         
         <motion.div

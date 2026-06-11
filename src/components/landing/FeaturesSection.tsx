@@ -5,38 +5,38 @@ import { Brain, Zap, Shield, Glasses, MessageCircle, TrendingUp } from 'lucide-r
 const features = [
   {
     icon: Brain,
-    title: 'Predictive AI',
-    description: 'ML algorithms forecast habit disruptions before they happen, suggesting preemptive micro-actions.',
-    gradient: 'from-violet-500 to-purple-600'
+    title: 'Desi Diet Tracker',
+    description: 'Log meals like Roti-Dal, Poha, and Biryani with estimated calories & protein to match traditional Indian eating patterns.',
+    gradient: 'from-orange-500 to-amber-600'
   },
   {
     icon: Zap,
-    title: 'Neurofeedback',
-    description: 'Real-time brainwave monitoring optimizes when and how you build habits for maximum neural impact.',
-    gradient: 'from-amber-500 to-orange-500'
+    title: 'Chai Limiter & Hydration',
+    description: 'Limit daily Chai cups, log water in traditional Matkas, and get Ayurvedic recommendations to keep digestion optimal.',
+    gradient: 'from-amber-500 to-yellow-600'
   },
   {
     icon: Shield,
-    title: 'Stake & Commit',
-    description: 'Blockchain-verified commitments with smart contract rewards. Put skin in the game.',
+    title: 'Ayurvedic & Yoga Routines',
+    description: 'Track Surya Namaskar rounds, Kapalbhati, Ushapan, and Haldi Doodh to build long-term immunity and physical vitality.',
     gradient: 'from-emerald-500 to-teal-500'
   },
   {
     icon: Glasses,
-    title: 'AR Visualization',
-    description: 'See your progress in augmented reality. Watch habits grow as living visualizations.',
+    title: 'Vitals Monitoring',
+    description: 'Log Steps, Sleep hours, Heart rate, and Weight to gain insights on your daily energy levels and physical health.',
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
     icon: MessageCircle,
-    title: 'AI Coach on WhatsApp',
-    description: 'Your personal habit coach available 24/7. Log, track, and get insights via chat.',
-    gradient: 'from-green-500 to-emerald-500'
+    title: 'AI Health Coach',
+    description: 'An interactive chatbot helping you replace junk food with roasted makhana, suggesting herbal teas, and tracking custom goals.',
+    gradient: 'from-violet-500 to-purple-600'
   },
   {
     icon: TrendingUp,
-    title: 'Pattern Intelligence',
-    description: 'Deep analytics reveal hidden patterns in your behavior, unlocking breakthrough insights.',
+    title: 'Desi Challenges & Badges',
+    description: 'Join 21-Day Yoga challenges or Step Yatras, and unlock rewards like Yogi Master, Chai Restrainer, and more.',
     gradient: 'from-rose-500 to-pink-500'
   }
 ];
