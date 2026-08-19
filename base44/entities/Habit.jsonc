@@ -1,0 +1,154 @@
+{
+  "name": "Habit",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the habit"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "health",
+        "productivity",
+        "mindfulness",
+        "fitness",
+        "learning",
+        "social",
+        "creativity"
+      ],
+      "default": "health"
+    },
+    "is_auto_detected": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this habit was auto-detected from patterns"
+    },
+    "detection_confidence": {
+      "type": "number",
+      "description": "Confidence score for auto-detected habits (0-100)"
+    },
+    "current_streak": {
+      "type": "number",
+      "default": 0
+    },
+    "best_streak": {
+      "type": "number",
+      "default": 0
+    },
+    "target_frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "3x_week",
+        "5x_week",
+        "weekly"
+      ],
+      "default": "daily"
+    },
+    "adaptive_difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "medium",
+        "hard",
+        "adaptive"
+      ],
+      "default": "adaptive",
+      "description": "Difficulty level that adjusts based on performance"
+    },
+    "current_protocol": {
+      "type": "object",
+      "description": "Current adaptive protocol settings",
+      "properties": {
+        "duration_minutes": {
+          "type": "number"
+        },
+        "intensity": {
+          "type": "string"
+        },
+        "rest_days": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "performance_trend": {
+      "type": "string",
+      "enum": [
+        "improving",
+        "stable",
+        "declining",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "last_adjustment_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "suggested",
+        "active",
+        "paused",
+        "archived"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

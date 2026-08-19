@@ -1,0 +1,132 @@
+{
+  "name": "HabitLog",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": true
+    },
+    "duration_minutes": {
+      "type": "number"
+    },
+    "intensity_rating": {
+      "type": "number",
+      "description": "1-10 how intense the session was"
+    },
+    "emotional_state_before": {
+      "type": "string",
+      "enum": [
+        "anxious",
+        "stressed",
+        "neutral",
+        "motivated",
+        "energized",
+        "tired",
+        "overwhelmed"
+      ],
+      "description": "Emotion before starting"
+    },
+    "emotional_state_after": {
+      "type": "string",
+      "enum": [
+        "anxious",
+        "stressed",
+        "neutral",
+        "motivated",
+        "energized",
+        "tired",
+        "overwhelmed",
+        "accomplished",
+        "peaceful"
+      ],
+      "description": "Emotion after completing"
+    },
+    "skip_reason": {
+      "type": "string",
+      "enum": [
+        "time_constraint",
+        "low_energy",
+        "anxiety",
+        "procrastination",
+        "external_event",
+        "forgot",
+        "other"
+      ],
+      "description": "Why the habit was skipped if not completed"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "context": {
+      "type": "object",
+      "description": "Environmental context when logged",
+      "properties": {
+        "time_of_day": {
+          "type": "string"
+        },
+        "day_of_week": {
+          "type": "string"
+        },
+        "weather": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "habit_id",
+    "date"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

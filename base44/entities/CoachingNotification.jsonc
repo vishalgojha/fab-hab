@@ -1,0 +1,95 @@
+{
+  "name": "CoachingNotification",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string",
+      "description": "Related habit ID"
+    },
+    "notification_type": {
+      "type": "string",
+      "enum": [
+        "insight",
+        "nudge",
+        "motivation",
+        "warning",
+        "achievement",
+        "adjustment_suggestion"
+      ],
+      "description": "Type of coaching notification"
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string",
+      "description": "AI-generated coaching message"
+    },
+    "analysis": {
+      "type": "object",
+      "description": "Data analysis that triggered this notification",
+      "properties": {
+        "metric": {
+          "type": "string"
+        },
+        "current_value": {
+          "type": "number"
+        },
+        "trend": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number"
+        }
+      }
+    },
+    "suggested_action": {
+      "type": "string",
+      "description": "Recommended action for user"
+    },
+    "sent_via": {
+      "type": "string",
+      "enum": [
+        "whatsapp",
+        "in_app",
+        "both"
+      ],
+      "default": "in_app"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_acted_upon": {
+      "type": "boolean",
+      "default": false
+    },
+    "user_response": {
+      "type": "string",
+      "description": "User's response to the coaching"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "neutral",
+        "concerning"
+      ],
+      "default": "neutral"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    }
+  },
+  "required": [
+    "notification_type",
+    "title",
+    "message"
+  ]
+}

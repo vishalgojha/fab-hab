@@ -1,0 +1,88 @@
+{
+  "name": "Badge",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Badge name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Emoji or icon identifier"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "streak",
+        "consistency",
+        "variety",
+        "milestone",
+        "special"
+      ],
+      "default": "milestone"
+    },
+    "requirement_type": {
+      "type": "string",
+      "enum": [
+        "streak_days",
+        "total_completions",
+        "habits_count",
+        "perfect_week",
+        "perfect_month",
+        "early_bird",
+        "night_owl"
+      ],
+      "description": "Type of achievement requirement"
+    },
+    "requirement_value": {
+      "type": "number",
+      "description": "Threshold value for unlocking"
+    },
+    "points_reward": {
+      "type": "number",
+      "default": 100
+    },
+    "rarity": {
+      "type": "string",
+      "enum": [
+        "common",
+        "rare",
+        "epic",
+        "legendary"
+      ],
+      "default": "common"
+    }
+  },
+  "required": [
+    "name",
+    "requirement_type",
+    "requirement_value"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": {
+          "$exists": true
+        }
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

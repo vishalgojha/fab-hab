@@ -1,0 +1,120 @@
+{
+  "name": "BreakForecast",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string"
+    },
+    "forecast_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the streak is predicted to break"
+    },
+    "break_probability": {
+      "type": "number",
+      "description": "Probability of streak breaking (0-100)"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium"
+    },
+    "primary_risk_factor": {
+      "type": "string",
+      "enum": [
+        "emotional_burnout",
+        "time_pressure",
+        "motivation_decline",
+        "external_disruption",
+        "fatigue"
+      ],
+      "description": "Main reason for predicted break"
+    },
+    "contributing_factors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommended_interventions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "timing": {
+            "type": "string"
+          },
+          "effectiveness": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "emotional_insight": {
+      "type": "string",
+      "description": "Why emotionally this is happening"
+    },
+    "is_addressed": {
+      "type": "boolean",
+      "default": false
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "habit_id",
+    "forecast_date",
+    "break_probability"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

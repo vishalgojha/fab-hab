@@ -1,0 +1,94 @@
+{
+  "name": "ProtocolAdjustment",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string"
+    },
+    "adjustment_type": {
+      "type": "string",
+      "enum": [
+        "difficulty_increase",
+        "difficulty_decrease",
+        "schedule_shift",
+        "duration_change",
+        "intensity_change",
+        "rest_addition"
+      ],
+      "description": "Type of adjustment made"
+    },
+    "previous_protocol": {
+      "type": "object",
+      "description": "Previous settings"
+    },
+    "new_protocol": {
+      "type": "object",
+      "description": "New adaptive settings"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Why the adjustment was made"
+    },
+    "trigger_metric": {
+      "type": "string",
+      "description": "What metric triggered the adjustment"
+    },
+    "applied_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expected_improvement": {
+      "type": "string"
+    },
+    "user_notified": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "habit_id",
+    "adjustment_type",
+    "new_protocol"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

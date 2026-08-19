@@ -1,0 +1,90 @@
+{
+  "name": "Stake",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string"
+    },
+    "stake_amount": {
+      "type": "number",
+      "description": "Amount staked in tokens"
+    },
+    "goal_description": {
+      "type": "string"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "failed",
+        "withdrawn"
+      ],
+      "default": "active"
+    },
+    "witnesses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Email addresses of witnesses"
+    },
+    "proof_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "completion_percentage": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "goal_description",
+    "deadline"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

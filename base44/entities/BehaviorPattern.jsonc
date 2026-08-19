@@ -1,0 +1,97 @@
+{
+  "name": "BehaviorPattern",
+  "type": "object",
+  "properties": {
+    "pattern_type": {
+      "type": "string",
+      "enum": [
+        "time_based",
+        "emotion_based",
+        "streak_based",
+        "context_based"
+      ],
+      "description": "Type of pattern detected"
+    },
+    "pattern_name": {
+      "type": "string",
+      "description": "Human readable pattern name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "confidence_score": {
+      "type": "number",
+      "description": "AI confidence in this pattern (0-100)"
+    },
+    "related_habit_id": {
+      "type": "string"
+    },
+    "trigger_factors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Factors that trigger this pattern"
+    },
+    "suggested_intervention": {
+      "type": "string"
+    },
+    "data_points": {
+      "type": "number",
+      "description": "Number of observations this pattern is based on"
+    },
+    "last_observed": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "pattern_type",
+    "pattern_name"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

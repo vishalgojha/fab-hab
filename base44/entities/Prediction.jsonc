@@ -1,0 +1,96 @@
+{
+  "name": "Prediction",
+  "type": "object",
+  "properties": {
+    "habit_id": {
+      "type": "string"
+    },
+    "prediction_type": {
+      "type": "string",
+      "enum": [
+        "disruption",
+        "opportunity",
+        "insight"
+      ],
+      "default": "insight"
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "AI confidence 0-100"
+    },
+    "suggested_action": {
+      "type": "string"
+    },
+    "trigger_factor": {
+      "type": "string",
+      "enum": [
+        "stress",
+        "sleep",
+        "schedule",
+        "weather",
+        "social",
+        "energy"
+      ],
+      "default": "schedule"
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_acted_upon": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "title",
+    "message"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

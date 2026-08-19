@@ -1,0 +1,143 @@
+{
+  "name": "Challenge",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Challenge name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "habit_category": {
+      "type": "string",
+      "enum": [
+        "health",
+        "productivity",
+        "mindfulness",
+        "fitness",
+        "learning",
+        "social",
+        "creativity",
+        "any"
+      ],
+      "default": "any",
+      "description": "What type of habits this challenge is for"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "public",
+        "private"
+      ],
+      "default": "public",
+      "description": "Who can see and join this challenge"
+    },
+    "goal_type": {
+      "type": "string",
+      "enum": [
+        "streak_days",
+        "total_completions",
+        "consistency_percentage"
+      ],
+      "default": "streak_days",
+      "description": "How progress is measured"
+    },
+    "goal_value": {
+      "type": "number",
+      "description": "Target value for the goal (e.g., 30 days, 100 completions)"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "is_team_based": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is a team challenge"
+    },
+    "max_participants": {
+      "type": "number",
+      "description": "Maximum number of participants (null = unlimited)"
+    },
+    "reward_points": {
+      "type": "number",
+      "default": 500,
+      "description": "Points awarded for completing the challenge"
+    },
+    "reward_badge_id": {
+      "type": "string",
+      "description": "Badge ID awarded upon completion"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "upcoming",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "default": "upcoming"
+    },
+    "invite_code": {
+      "type": "string",
+      "description": "Code for private challenge invites"
+    },
+    "participant_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "goal_type",
+    "goal_value",
+    "start_date",
+    "end_date"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
